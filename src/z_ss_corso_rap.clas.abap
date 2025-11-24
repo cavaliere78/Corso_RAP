@@ -10,9 +10,9 @@ CLASS z_ss_corso_rap DEFINITION
   PRIVATE SECTION.
     METHODS _m_test
       IMPORTING
-        i_input            TYPE string
+        i_input         TYPE string
       RETURNING
-        value(r_result) TYPE char10.
+        VALUE(r_result) TYPE char10.
 ENDCLASS.
 
 
@@ -21,7 +21,10 @@ CLASS z_ss_corso_rap IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.
+
     out->write( _m_test( 'SS' )  ).
+    SELECT agency_id, name, country_code FROM /dmo/agency
+    INTO TABLE @DATA(lt_tab).
   ENDMETHOD.
 
   METHOD _m_test.
