@@ -1,0 +1,22 @@
+managed implementation in class zbp_r_biglietto_ss unique;
+strict ( 2 );
+
+define behavior for ZR_BIGLIETTO_SS alias ZRBIG
+persistent table zbiglietto_ss
+lock master
+authorization master ( instance )
+etag master ZmodTs
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field (readonly : update ) Zid;
+    mapping for zbiglietto_ss{
+    Zid         = zid;
+    ZcreUser    = zcre_user;
+    ZcreTs      =zcre_ts;
+    ZmodUser    = zmod_user;
+    ZmodTs      = zmod_ts;
+    }
+
+}

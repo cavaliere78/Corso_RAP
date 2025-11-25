@@ -1,0 +1,4 @@
+@EndUserText.label: 'BIGLIETTO_SS_SRV_V2'
+define service ZUI_BIGLIETTO_SS_SRV_V2 {
+  expose ZC_BIGLIETTO_SS;
+}
