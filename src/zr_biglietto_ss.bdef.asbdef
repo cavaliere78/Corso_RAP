@@ -10,6 +10,7 @@ etag master ZmodTs
   create ( authorization : global );
   update;
   delete;
+  field (mandatory : create ) Zid;
   field (readonly : update ) Zid;
     mapping for zbiglietto_ss{
     Zid         = zid;

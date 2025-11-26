@@ -1,0 +1,81 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+    typeName: 'Biglietto',
+    typeNamePlural: 'Biglietti',
+    typeImageUrl: '',
+    imageUrl: '',
+    title: {
+        type: #STANDARD,
+        label: 'XXXX',
+        iconUrl: '',
+        criticality: '',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: 'Zid',
+        valueQualifier: '',
+        targetElement: '',
+        url: ''
+    },
+    description: {
+        type: #STANDARD,
+        label: '',
+        iconUrl: '',
+        criticality: '',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: 'ZmodUser',
+        valueQualifier: '',
+        targetElement: '',
+        url: ''
+    }
+}
+
+annotate view ZC_BIGLIETTO_SS
+    with 
+{
+
+@UI.facet: [{ 
+label: 'General information',
+id: 'GeneralInfo',
+type:#IDENTIFICATION_REFERENCE,
+purpose: #STANDARD,
+position: 10    
+ }]
+
+@EndUserText.label: 'ID Label'
+@UI.selectionField: [{ 
+    position: 10 }]   
+@UI.identification: [{
+ position: 10,
+ label: 'IDentification' }]
+@UI.lineItem: [{ 
+    position: 10
+     }]        
+    Zid;
+    
+@UI.selectionField: [{ 
+    position: 20 }]
+@UI.lineItem: [{ 
+    position: 20
+     }]              
+    ZcreUser;
+
+@UI.selectionField: [{ 
+    position: 30 }]  
+@UI.lineItem: [{ 
+    position: 30
+     }]        
+    ZcreTs;
+
+
+@UI.selectionField: [{ 
+    position: 40 }]    
+@UI.lineItem: [{ 
+    position: 40
+     }]        
+    ZmodUser;
+    
+@UI.selectionField: [{ 
+    position: 50 }]  
+    ZmodTs;
+    
+}

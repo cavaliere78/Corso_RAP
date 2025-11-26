@@ -1,15 +1,5 @@
-class ZBP_R_BIGLIETTO_SS definition
-  public
-  abstract
-  final
-  create public .
-
-public section.
-protected section.
-private section.
+CLASS zbp_r_biglietto_ss DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zr_biglietto_ss.
 ENDCLASS.
 
-
-
-CLASS ZBP_R_BIGLIETTO_SS IMPLEMENTATION.
+CLASS zbp_r_biglietto_ss IMPLEMENTATION.
 ENDCLASS.
