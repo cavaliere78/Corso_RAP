@@ -1,3 +1,19 @@
+CLASS lhc_zrcomponentiss DEFINITION INHERITING FROM cl_abap_behavior_handler.
+
+  PRIVATE SECTION.
+
+    METHODS get_global_authorizations FOR GLOBAL AUTHORIZATION
+      IMPORTING REQUEST requested_authorizations FOR ZrComponentiSs RESULT result.
+
+ENDCLASS.
+
+CLASS lhc_zrcomponentiss IMPLEMENTATION.
+
+  METHOD get_global_authorizations.
+  ENDMETHOD.
+
+ENDCLASS.
+
 CLASS LHC_ZR_BIGLIETTO_SS2 DEFINITION INHERITING FROM CL_ABAP_BEHAVIOR_HANDLER.
   PRIVATE SECTION.
     METHODS:
@@ -16,7 +32,9 @@ CLASS LHC_ZR_BIGLIETTO_SS2 DEFINITION INHERITING FROM CL_ABAP_BEHAVIOR_HANDLER.
       det1 FOR DETERMINE ON SAVE
             IMPORTING keys FOR Biglietto~det1,
       LogicDel FOR MODIFY
-            IMPORTING keys FOR ACTION Biglietto~LogicDel RESULT result.
+            IMPORTING keys FOR ACTION Biglietto~LogicDel RESULT result,
+      earlynumbering_cba_Componenti FOR NUMBERING
+            IMPORTING entities FOR CREATE Biglietto\_Componenti.
 ENDCLASS.
 
 CLASS LHC_ZR_BIGLIETTO_SS2 IMPLEMENTATION.
@@ -275,6 +293,42 @@ DATA: lt_biglietto TYPE TABLE FOR READ RESULT zr_biglietto_ss2.
 
 
 
+  ENDMETHOD.
+
+  METHOD earlynumbering_cba_Componenti.
+    DATA:
+        ls_mapped LIKE LINE OF mapped-zrcomponentiss.
+    READ ENTITIES OF zr_biglietto_ss2
+        IN LOCAL MODE
+        ENTITY Biglietto BY \_Componenti
+        FIELDS ( Progressivo )
+        WITH
+        VALUE #( FOR line
+            IN entities
+            (
+                Zid = line-Zid
+                %is_draft   = line-%is_draft
+            )
+             )
+        RESULT DATA(travels).
+    SELECT MAX( Progressivo )
+       FROM @travels AS travel
+       INTO @DATA(lv_progr).
+
+    LOOP AT entities
+            INTO DATA(ls_entity).
+      LOOP AT ls_entity-%target
+          INTO DATA(target).
+        lv_progr += 1.
+        CLEAR ls_mapped.
+        ls_mapped-%cid        = target-%cid.
+        ls_mapped-%is_draft   = target-%is_draft.
+        ls_mapped-Zid = target-zid.
+        ls_mapped-Progressivo = lv_progr.
+        APPEND ls_mapped
+            TO mapped-zrcomponentiss.
+      ENDLOOP.
+    ENDLOOP.
   ENDMETHOD.
 
 ENDCLASS.

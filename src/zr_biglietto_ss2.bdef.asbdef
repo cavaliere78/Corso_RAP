@@ -53,5 +53,49 @@ early numbering
       ZmodTs           = zmod_ts;
       Locallastchanged = locallastchanged;
     }
+ association _Componenti {create ; with draft; }
+}
 
+
+define behavior for ZR_COMPONENTI_SS alias ZrComponentiSs
+persistent table ZCOMPONENTI_SS
+extensible
+draft table ZCOMPONENTI_SS_D
+etag dependent
+lock dependent
+authorization master( global )
+early numbering
+{
+//  field ( mandatory : create )
+//    Zid,
+//   Progressivo;
+
+
+  field ( readonly )
+   ZcreUser,
+   ZcreTs,
+   ZmodUser,
+   ZmodTs,
+
+//  field ( readonly : update )
+   Zid,
+   Progressivo;
+
+
+
+  update;
+  delete;
+
+
+  mapping for ZCOMPONENTI_SS corresponding extensible
+  {
+    Zid = zid;
+    Progressivo = progressivo;
+    TipoUtente = tipo_utente;
+    ZcreUser = zcre_user;
+    ZcreTs = zcre_ts;
+    ZmodUser = zmod_user;
+    ZmodTs = zmod_ts;
+  }
+ association _Biglietto { with draft; }
 }

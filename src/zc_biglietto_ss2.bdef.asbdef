@@ -18,4 +18,17 @@ use etag
   use action Prepare;
   use action LogicDel;
   use function GetDefaultsForCreate;
+  use association _Componenti {create; with draft;}
+}
+
+define behavior for ZC_COMPONENTI_SS alias ZcComponentiSs
+extensible
+use etag
+{
+//  use create;
+  use update;
+  use delete;
+
+  use association  _Biglietto {with draft;}
+
 }

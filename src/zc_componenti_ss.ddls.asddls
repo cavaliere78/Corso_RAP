@@ -4,19 +4,22 @@
   label: '###GENERATED Core Data Service Entity'
 }
 @ObjectModel: {
-  sapObjectNodeType.name: 'ZBIGLIETTO_SS2'
+  sapObjectNodeType.name: 'ZCOMPONENTI_SS'
 }
 @AccessControl.authorizationCheck: #MANDATORY
-define root view entity ZC_BIGLIETTO_SS2
-  provider contract transactional_query
-  as projection on ZR_BIGLIETTO_SS2
-  association [1..1] to ZR_BIGLIETTO_SS2 as _BaseEntity on $projection.Zid = _BaseEntity.Zid
+define view entity ZC_COMPONENTI_SS
+
+  as projection on ZR_COMPONENTI_SS
+  association [1..1] to ZR_COMPONENTI_SS as _BaseEntity 
+  on $projection.Zid = _BaseEntity.Zid 
+  and $projection.Progressivo = _BaseEntity.Progressivo
 {
   key Zid,
+  key Progressivo,
+  TipoUtente,
   @Semantics: {
     user.createdBy: true
   }
-  Stato,
   ZcreUser,
   @Semantics: {
     systemDateTime.createdAt: true
@@ -33,7 +36,7 @@ define root view entity ZC_BIGLIETTO_SS2
   @Semantics: {
     systemDateTime.localInstanceLastChangedAt: true
   }
-  Locallastchanged,
+
   _BaseEntity,
-  _Componenti :redirected to composition child ZC_COMPONENTI_SS
+  _Biglietto : redirected to parent ZC_BIGLIETTO_SS2
 }

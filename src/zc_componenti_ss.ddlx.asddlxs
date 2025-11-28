@@ -3,7 +3,7 @@
 @UI.headerInfo.title.value: 'Zid'
 @UI.headerInfo.description.type: #STANDARD
 @UI.headerInfo.description.value: 'Zid'
-annotate view ZC_BIGLIETTO_SS2 with
+annotate view ZC_COMPONENTI_SS with
 {
   @UI.facet: [ {
     label: 'General Information', 
@@ -11,113 +11,109 @@ annotate view ZC_BIGLIETTO_SS2 with
     purpose: #STANDARD, 
     position: 10 , 
     type: #IDENTIFICATION_REFERENCE
-  },
-  {
-  label: 'Componenti',
-  id: 'Componenti',
-  purpose: #STANDARD,
-  position: 20 ,
-  type: #LINEITEM_REFERENCE,
-  targetElement: '_Componenti'    
-  }
-   ]
-    
+  } ]
   @UI.identification: [ {
     position: 10 
   } ]
   @UI.lineItem: [ {
     position: 10 
-  },
-  { position: 12,
-    type: #FOR_ACTION,
-    dataAction: 'LogicDel',
-    label: 'DEL'
-   }
-   ]
+  } ]
   @UI.selectionField: [ {
     position: 10 
   } ]
   Zid;
-
   
+  @EndUserText.label: 'Progressivo'
   @UI.identification: [ {
-    position: 15 
+    position: 20 , 
+    label: 'Progressivo'
   } ]
   @UI.lineItem: [ {
-    position: 15 
-  } ]
-  @UI.selectionField: [ {
-    position: 15 
-  } ]
-  Stato;
-
-  
-  @UI.identification: [ {
-    position: 20 
-  } ]
-  @UI.lineItem: [ {
-    position: 20 
+    position: 20 , 
+    label: 'Progressivo'
   } ]
   @UI.selectionField: [ {
     position: 20 
+  } ]
+  Progressivo;
+  
+  @UI.identification: [ {
+    position: 30 
+  } ]
+  @UI.lineItem: [ {
+    position: 30 
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  TipoUtente;
+  
+  @UI.identification: [ {
+    position: 40 
+  } ]
+  @UI.lineItem: [ {
+    position: 40 
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
   } ]
   ZcreUser;
   
   @UI.identification: [ {
-    position: 30 
+    position: 50 
   } ]
   @UI.lineItem: [ {
-    position: 30 
+    position: 50 
   } ]
   @UI.selectionField: [ {
-    position: 30 
+    position: 50 
   } ]
   ZcreTs;
   
   @UI.identification: [ {
-    position: 40 
+    position: 60 
   } ]
   @UI.lineItem: [ {
-    position: 40 
+    position: 60 
   } ]
   @UI.selectionField: [ {
-    position: 40 
+    position: 60 
   } ]
   ZmodUser;
   
   @UI.identification: [ {
-    position: 50 
+    position: 70 
   } ]
   @UI.lineItem: [ {
-    position: 50 
-  } ]
-  @UI.selectionField: [ {
-    position: 50 
-  } ]
-  ZmodTs;
-  
-  @UI.identification: [ {
-    position: 60 
-  } ]
-  @UI.lineItem: [ {
-    position: 60 
-  } ]
-  @UI.selectionField: [ {
-    position: 60 
-  } ]
-  Locallastchanged;
-  
-  @EndUserText.label: '_BaseEntity'
-  @UI.identification: [ {
-    position: 70 , 
-    label: '_BaseEntity'
-  } ]
-  @UI.lineItem: [ {
-    position: 70 , 
-    label: '_BaseEntity'
+    position: 70 
   } ]
   @UI.selectionField: [ {
     position: 70 
+  } ]
+  ZmodTs;
+  
+//  @UI.identification: [ {
+//    position: 80 
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 80 
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 80 
+//  } ]
+//  Locallastchanged;
+  
+  @EndUserText.label: '_BaseEntity'
+  @UI.identification: [ {
+    position: 90 , 
+    label: '_BaseEntity'
+  } ]
+  @UI.lineItem: [ {
+    position: 90 , 
+    label: '_BaseEntity'
+  } ]
+  @UI.selectionField: [ {
+    position: 90 
   } ]
   _BaseEntity;
 }

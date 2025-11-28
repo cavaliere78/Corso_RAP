@@ -1,15 +1,17 @@
 @AccessControl.authorizationCheck: #MANDATORY
 @Metadata.allowExtensions: true
-@ObjectModel.sapObjectNodeType.name: 'ZBIGLIETTO_SS2'
+@ObjectModel.sapObjectNodeType.name: 'ZCOMPONENTI_SS'
 @EndUserText.label: '###GENERATED Core Data Service Entity'
-define root view entity ZR_BIGLIETTO_SS2
-  as select from zbiglietto_ss2 as Biglietto
-  composition [0..*] of ZR_COMPONENTI_SS as _Componenti
+define view entity ZR_COMPONENTI_SS
+  as select from zcomponenti_ss 
+  association to parent ZR_BIGLIETTO_SS2 as _Biglietto
+  on _Biglietto.Zid = $projection.Zid
 {
   key zid as Zid,
+  key progressivo as Progressivo,
+  tipo_utente as TipoUtente,
   @Semantics.user.createdBy: true
   zcre_user as ZcreUser,
-  stato as Stato,
   @Semantics.systemDateTime.createdAt: true
   zcre_ts as ZcreTs,
   @Semantics.user.lastChangedBy: true
@@ -17,6 +19,6 @@ define root view entity ZR_BIGLIETTO_SS2
   @Semantics.systemDateTime.lastChangedAt: true
   zmod_ts as ZmodTs,
   @Semantics.systemDateTime.localInstanceLastChangedAt: true
-  locallastchanged as Locallastchanged,
-  _Componenti
+  
+  _Biglietto
 }
